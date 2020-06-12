@@ -1,10 +1,3 @@
-// use object to crate smt
-// create a prompt for the user
-// array contains the journal entries
-// while loop to ask the user until they choose quit
-// if prompt === 1 display already exist entry
-// if prompt === 2 here where we entered the new journal.
-
 function Journal(title, content ) {
   this.title = title;
   this.content = content;
@@ -26,15 +19,15 @@ let content = [
 ]
 const myJournal = () => {
   let firstJournal = new Journal(title[0], content[0]);
-  let journal1 = (`title: "${firstJournal.title}" \n content: ${firstJournal.content}`)
+  let journal1 = (`Title: "${firstJournal.title}" \n Content: ${firstJournal.content}`)
   alert(journal1)
   
   let secondJouranl = new Journal(title[1], content[1]);
-  let journal2 = (`title: "${secondJouranl.title}" \n content: ${secondJouranl.content}`);
+  let journal2 = (`Title: "${secondJouranl.title}" \n Content: ${secondJouranl.content}`);
   alert(journal2)
   
   let thihrdJournal = new Journal(title[2], content[2])
-  let journal3 = (`title: "${thihrdJournal.title}" \n contnent: ${thihrdJournal.content}`)
+  let journal3 = (`Title: "${thihrdJournal.title}" \n Contnent: ${thihrdJournal.content}`)
   alert(journal3);
   return myJournal;
 }
@@ -44,10 +37,20 @@ let startMenu = prompt('Welcome to Onja journal! \n Choose(1) for listing all th
 if (startMenu === "1") {
     myJournal();
 } else if (startMenu === "2") {
-  let newJournalTitle = prompt("enter here the title");
+  let newjournalToday = "yes";
+while (newjournalToday === "yes") {
+  let newJournalTitle = prompt("enter your journal title");
   title.push(newJournalTitle);
-  let newJournalContent = prompt("here is your journal content")
+  let newJournalContent = prompt("enter your journal content")
   content.push(newJournalContent);
+  myJournal();
+  for (let i = 2; i < title.length; i++) {
+    let  newjournal = new Journal(title[i], content[i]);
+    let newjournal1 = (`Title: $"${newjournal.title}" \n Content: ${newjournal.content}`);
+    alert(newjournal1);
+  }
+  newjournalToday = prompt("Do you have new journal?(yes) (no)")
+}
 } else if (startMenu === "3") {
-  alert("bye bye!!!!")
+  alert("good bye, have a good day")
 }
