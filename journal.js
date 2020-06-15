@@ -1,14 +1,9 @@
-//Created an  
+//Created a function to access the title an the content.
 function Journal(title, content ) {
   this.title = title;
   this.content = content;
 }
 
-// prototype to access title and content
-Journal.prototype = {
-  getTitle: function() {return this.title},
-  getContent: function() {return this.content},
-}
 // array for the title
 let title = [
   "Hello world", "today's news", "today's program"
@@ -36,7 +31,7 @@ const myJournal = () => {
   return myJournal;
 }
 //promt of the start menu.
-let startMenu = prompt('Welcome to Onja journal! \n Choose(1) for listing all the entires \n Choose (2) for adding a new entry \n Choose (3) to quit')
+let startMenu = prompt('Welcome to Onja journal! \n Choose(1) for listing all the entires \n Choose (2) for adding a new entry \n Choose (3) to quit \n Choose (4) to delete the last jornal')
 // if the start menu equal to one, desplay existance jouranl
 if (startMenu === "1") {
     myJournal();
@@ -53,16 +48,22 @@ if (startMenu === "1") {
       content.push(newJournalContent);
         myJournal();
         //added for loop to go through what they user have entered
-    for (let i = 2; i < title.length; i++) {
-      let  newjournal = new Journal(title[i], content[i]);
-      let newjournal1 = (`Title: $"${newjournal.title}" \n Content: ${newjournal.content}`);
-      alert(newjournal1);
+    for (let i = 3; i < title.length; i++) {
+      let  newJournal = new Journal(title[i], content[i]);
+      let newJournalList = (`Title: "${newJournal.title}" \n Content: ${newJournal.content}`);
+      alert(newJournalList);
    }
    //promt to ask the user if they still have more news.
-    newjournalToday = prompt("Do you have new journal?(yes) (no)")
+    newjournalToday = prompt("Do you still have a new journal?(yes) (no)")
   }
   alert("Come back if you have new journal to update")
   //If they user display 3, means they qiut.
 } else if (startMenu === "3") {
-  alert("good bye, have a good day")
+  alert("good bye, have a good day");
+} else if (startMenu === "4") {
+  for (let i = tilte.length; i > title.length; i--) {
+    title.pop();
+    content.pop();
+    myJournal();
+  }
 }
