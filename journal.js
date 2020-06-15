@@ -61,9 +61,7 @@ if (startMenu === "1") {
 } else if (startMenu === "3") {
   alert("good bye, have a good day");
 } else if (startMenu === "4") {
-  for (let i = tilte.length; i > title.length; i--) {
     title.pop();
     content.pop();
-    myJournal();
-  }
+  myJournal();
 }
