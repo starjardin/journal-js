@@ -1,9 +1,10 @@
 //Created a function to access the title an the content.
-function Journal(title, content ) {
+class Journal {
+ constructor(title, content) {
   this.title = title;
   this.content = content;
+  }
 }
-
 // array for the title
 let title = [
   "Hello world", "today's news", "today's program"
@@ -31,37 +32,37 @@ const myJournal = () => {
   return myJournal;
 }
 //promt of the start menu.
-let startMenu = prompt('Welcome to Onja journal! \n Choose(1) for listing all the entires \n Choose (2) for adding a new entry \n Choose (3) to quit \n Choose (4) to delete the last jornal')
+let startMenu = prompt('Welcome to Onja journal! \n Choose(1) for listing all the entires \n Choose (2) for adding a new entry \n Choose (3) to quit \n Choose (4) to delete the last jornal \n Choose (5) to delete a specific journal');
+while (startMenu !== "3") {
+  let startMenu = prompt('Welcome to Onja journal! \n Choose(1) for listing all the entires \n Choose (2) for adding a new entry \n Choose (3) to quit \n Choose (4) to delete the last jornal \n Choose (5) to delete a specific jouranl')
 // if the start menu equal to one, desplay existance jouranl
-if (startMenu === "1") {
+  if (startMenu === "1") {
+      myJournal();
+      //if the strat menu is equal to 2, give them a prompt to enter a new joournal.
+  } else if (startMenu === "2") {
+    //ask them if they still have more journal
+    let newjournalToday = "yes";
+    while (newjournalToday === "yes") {
+      //prompt of a new journal title
+      let newJournalTitle = prompt("enter your journal title");
+        title.push(newJournalTitle);
+        //promt of the new journal content
+      let newJournalContent = prompt("enter your journal content")
+        content.push(newJournalContent);
+          myJournal();
+          //added for loop to go through what they user have entered
+      for (let i = 3; i < title.length; i++) {
+        let  newJournal = new Journal(title[i], content[i]);
+        let newJournalList = (`Title: "${newJournal.title}" \n Content: ${newJournal.content}`);
+        alert(newJournalList);
+    }
+    //promt to ask the user if they still have more news.
+      newjournalToday = prompt("Do you still have a new journal?(yes) (no)")
+    }
+    alert("Come back if you have new journal to update")
+  } else if (startMenu === "4") {
+      title.pop();
+      content.pop();
     myJournal();
-    //if the strat menu is equal to 2, give them a prompt to enter a new joournal.
-} else if (startMenu === "2") {
-  //ask them if they still have more journal
-  let newjournalToday = "yes";
-  while (newjournalToday === "yes") {
-    //prompt of a new journal title
-    let newJournalTitle = prompt("enter your journal title");
-      title.push(newJournalTitle);
-      //promt of the new journal content
-    let newJournalContent = prompt("enter your journal content")
-      content.push(newJournalContent);
-        myJournal();
-        //added for loop to go through what they user have entered
-    for (let i = 3; i < title.length; i++) {
-      let  newJournal = new Journal(title[i], content[i]);
-      let newJournalList = (`Title: "${newJournal.title}" \n Content: ${newJournal.content}`);
-      alert(newJournalList);
-   }
-   //promt to ask the user if they still have more news.
-    newjournalToday = prompt("Do you still have a new journal?(yes) (no)")
   }
-  alert("Come back if you have new journal to update")
-  //If they user display 3, means they qiut.
-} else if (startMenu === "3") {
-  alert("good bye, have a good day");
-} else if (startMenu === "4") {
-    title.pop();
-    content.pop();
-  myJournal();
 }
