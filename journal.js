@@ -64,5 +64,15 @@ while (startMenu !== "3") {
       title.pop();
       content.pop();
     myJournal();
+  } else if (startMenu === "5") {
+    let deleteJouranl = prompt("Which jouranl do you want to delete");
+      for (let i = 0; i < title.length; i++) {
+        // title.indexOf(deleteJouranl).pop();
+        // content.indexOf(deleteJouranl).pop();
+        console.log(title.length);
+        console.log(deleteJouranl);
+        // console.log(title);
+    }
   }
+  myJournal();
 }
