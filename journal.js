@@ -29,17 +29,26 @@ const myJournal = () => {
   let thihrdJournal = new Journal(title[2], content[2])
   let journal3 = (`Title: "${thihrdJournal.title}" \n Contnent: ${thihrdJournal.content}`)
   alert(journal3);
-  return myJournal;
 }
+
+let menuSting = `
+Welcome to Onja journal!
+
+Choose(1) for listing all the entires
+Choose (2) for adding a new entry
+Choose (3) to quit
+Choose (4) to delete the last journal
+Choose (5) to delete a specific jouranl.
+`
 //promt of the start menu.
-let startMenu = prompt('Welcome to Onja journal! \n Choose(1) for listing all the entires \n Choose (2) for adding a new entry \n Choose (3) to quit \n Choose (4) to delete the last jornal \n Choose (5) to delete a specific journal');
-while (startMenu !== "3") {
-  let startMenu = prompt('Welcome to Onja journal! \n Choose(1) for listing all the entires \n Choose (2) for adding a new entry \n Choose (3) to quit \n Choose (4) to delete the last jornal \n Choose (5) to delete a specific jouranl')
+let startMenu;
+while (startMenu !== 3) {
+  startMenu = Number(prompt(menuSting));
 // if the start menu equal to one, desplay existance jouranl
-  if (startMenu === "1") {
+  if (startMenu === 1) {
       myJournal();
       //if the strat menu is equal to 2, give them a prompt to enter a new joournal.
-  } else if (startMenu === "2") {
+  } else if (startMenu === 2) {
     //ask them if they still have more journal
     let newjournalToday = "yes";
     while (newjournalToday === "yes") {
@@ -49,9 +58,8 @@ while (startMenu !== "3") {
         //promt of the new journal content
       let newJournalContent = prompt("enter your journal content")
         content.push(newJournalContent);
-          myJournal();
           //added for loop to go through what they user have entered
-      for (let i = 3; i < title.length; i++) {
+      for (let i = 0; i < title.length; i++) {
         let  newJournal = new Journal(title[i], content[i]);
         let newJournalList = (`Title: "${newJournal.title}" \n Content: ${newJournal.content}`);
         alert(newJournalList);
@@ -60,19 +68,11 @@ while (startMenu !== "3") {
       newjournalToday = prompt("Do you still have a new journal?(yes) (no)")
     }
     alert("Come back if you have new journal to update")
-  } else if (startMenu === "4") {
-      title.pop();
-      content.pop();
-    myJournal();
-  } else if (startMenu === "5") {
+  } else if (startMenu === 4) {
+    const entryDeleted = newJournal.pop();
+      alert(`We have deleted the last entry : ${entryDeleted.title}`)
+  } else if (startMenu === 5) {
     let deleteJouranl = prompt("Which jouranl do you want to delete");
-      for (let i = 0; i < title.length; i++) {
-        // title.indexOf(deleteJouranl).pop();
-        // content.indexOf(deleteJouranl).pop();
-        console.log(title.length);
-        console.log(deleteJouranl);
-        // console.log(title);
-    }
+    let deleteEntry = Journal.splice(deleteJouranl--, 1);
   }
-  myJournal();
 }
